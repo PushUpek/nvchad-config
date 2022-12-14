@@ -12,6 +12,7 @@ local servers = {
   "dockerls",
   "gopls",
   "luau_lsp",
+  "clangd",
 }
 
 for _, lsp in ipairs(servers) do

@@ -24,7 +24,7 @@ M.treesitter = {
 M.mason = {
   ensure_installed = {
     -- lua stuff
-    "luau-lsp",
+    "lua-language-server",
 
     -- web dev stuff
     "eslint-lsp",
@@ -39,6 +39,9 @@ M.mason = {
     -- golang
     "gopls",
 
+    -- c/c++
+    "clangd",
+
     -- other
     "bash-language-server",
     "dockerfile-language-server",
@@ -49,6 +52,11 @@ M.mason = {
 M.nvimtree = {
   git = {
     enable = true,
+  },
+
+  filters = {
+    dotfiles = false,
+    custom = { "^.git$", "**/.null-ls_*" },
   },
 
   renderer = {

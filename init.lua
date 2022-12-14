@@ -5,6 +5,13 @@ vim.opt.colorcolumn = "80"
 vim.o.colorcolumn = "80"
 vim.cmd [[ set colorcolumn=80 ]]
 
+vim.wo.wrap = false
+
+-- neovide config
+if vim.fn.exists "g:neovide" then
+  vim.o.guifont = "SauceCodePro Nerd Font:h12"
+end
+
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd [[
 augroup highlight_yank

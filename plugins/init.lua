@@ -43,7 +43,7 @@ return {
   },
 
   ["NvChad/nvterm"] = {
-    diable = false,
+    disable = false,
     override_options = overrides.nvterm,
   },
 }
