@@ -27,6 +27,9 @@ end
 
 lspconfig.pyright.setup {
   on_attach = on_attach,
+  root_dir = function()
+    return vim.fn.getcwd()
+  end,
   capabilities = capabilities,
   flags = {
     debounce_text_changes = 150,

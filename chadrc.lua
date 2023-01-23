@@ -2,7 +2,7 @@ M = {}
 
 M.ui = {
   theme_toggle = { "everforest", "everforest_light" },
-  theme = "everforest",
+  theme = "onenord",
 }
 
 M.plugins = require "custom.plugins"
