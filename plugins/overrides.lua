@@ -32,6 +32,7 @@ M.mason = {
 
     -- python
     "pyright",
+    "ruff-lsp",
 
     -- rust
     "rust-analyzer",

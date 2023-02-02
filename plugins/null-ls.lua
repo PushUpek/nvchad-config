@@ -9,9 +9,7 @@ local b = null_ls.builtins
 local sources = {
   -- Python
   b.formatting.blue,
-  b.formatting.isort,
 
-  b.diagnostics.flake8,
   b.diagnostics.mypy,
 
   -- Lua

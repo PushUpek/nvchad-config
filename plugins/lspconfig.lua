@@ -7,6 +7,7 @@ local servers = {
   "eslint",
   "vuels",
   "pyright",
+  "ruff_lsp",
   "rust_analyzer",
   "bashls",
   "dockerls",
@@ -44,6 +45,24 @@ lspconfig.pyright.setup {
         useLibraryCodeForTypes = true,
         diagnosticMode = "workspace",
       },
+    },
+  },
+}
+
+lspconfig.ruff_lsp.setup {
+  on_attach = on_attach,
+  root_dir = function()
+    return vim.fn.getcwd()
+  end,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  init_options = {
+    settings = {
+      args = {},
+      organizeImports = true,
+      fixAll = false,
     },
   },
 }
