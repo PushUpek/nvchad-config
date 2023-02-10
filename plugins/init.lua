@@ -46,4 +46,9 @@ return {
     disable = false,
     override_options = overrides.nvterm,
   },
+
+  ["arcticicestudio/nord-vim"] = {
+    disable = false
+  },
+  }
 }

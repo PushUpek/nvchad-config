@@ -60,7 +60,7 @@ lspconfig.ruff_lsp.setup {
   },
   init_options = {
     settings = {
-      args = {},
+      -- args = {},
       organizeImports = true,
       fixAll = false,
     },
