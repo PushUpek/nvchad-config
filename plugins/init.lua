@@ -50,5 +50,4 @@ return {
   ["arcticicestudio/nord-vim"] = {
     disable = false
   },
-  }
 }

@@ -1,4 +1,3 @@
-local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
@@ -15,6 +14,26 @@ local servers = {
   "luau_lsp",
   "clangd",
 }
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+local on_attach = function(client, bufnr)
+  require("plugins.configs.lspconfig").on_attach(client, bufnr)
+
+  client.server_capabilities.documentFormattingProvider = true
+  client.server_capabilities.documentRangeFormattingProvider = true
+
+  if client.supports_method "textDocument/formatting" then
+    vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format { bufnr = bufnr }
+      end,
+    })
+  end
+end
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -60,7 +79,7 @@ lspconfig.ruff_lsp.setup {
   },
   init_options = {
     settings = {
-      -- args = {},
+      args = {},
       organizeImports = true,
       fixAll = false,
     },
