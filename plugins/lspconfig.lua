@@ -1,7 +1,6 @@
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-
 local servers = {
   "eslint",
   "vuels",
@@ -11,7 +10,7 @@ local servers = {
   "bashls",
   "dockerls",
   "gopls",
-  "luau_lsp",
+  "lua_ls",
   "clangd",
 }
 
@@ -45,11 +44,23 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+lspconfig.lua_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+    },
+  },
+}
+
 lspconfig.pyright.setup {
   on_attach = on_attach,
-  root_dir = function()
-    return vim.fn.getcwd()
-  end,
   capabilities = capabilities,
   flags = {
     debounce_text_changes = 150,
@@ -62,7 +73,7 @@ lspconfig.pyright.setup {
         autoImportCompletions = false,
         typeCheckingMode = "off",
         useLibraryCodeForTypes = true,
-        diagnosticMode = "workspace",
+        diagnosticMode = "openFilesOnly",
       },
     },
   },
@@ -70,9 +81,6 @@ lspconfig.pyright.setup {
 
 lspconfig.ruff_lsp.setup {
   on_attach = on_attach,
-  root_dir = function()
-    return vim.fn.getcwd()
-  end,
   capabilities = capabilities,
   flags = {
     debounce_text_changes = 150,

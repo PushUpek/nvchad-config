@@ -35,12 +35,12 @@ M.custom3 = {
 M.custom4 = {
   -- terminal mode
   t = {
-    -- ["<leader>t"] = {
-    --   function()
-    --     require("nvterm.terminal").toggle "float"
-    --   end,
-    --   "toggle floating term",
-    -- },
+    ["<leader>t"] = {
+      function()
+        require("nvterm.terminal").toggle "float"
+      end,
+      "toggle floating term",
+    },
 
     ["<leader>th"] = {
       function()
@@ -59,12 +59,12 @@ M.custom4 = {
 
   -- normal mode
   n = {
-    -- ["<leader>t"] = {
-    --   function()
-    --     require("nvterm.terminal").toggle "float"
-    --   end,
-    --   "toggle floating term",
-    -- },
+    ["<leader>t"] = {
+      function()
+        require("nvterm.terminal").toggle "float"
+      end,
+      "toggle floating term",
+    },
 
     ["<leader>th"] = {
       function()

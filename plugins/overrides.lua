@@ -54,12 +54,10 @@ M.nvimtree = {
   git = {
     enable = true,
   },
-
   filters = {
     dotfiles = false,
     custom = { "^.git$", "**/.null-ls_*" },
   },
-
   renderer = {
     highlight_git = true,
     icons = {
@@ -73,6 +71,18 @@ M.nvimtree = {
 M.nvterm = {
   terminals = {
     shell = "/opt/homebrew/bin/fish",
+    type_opts = {
+      float = {
+        relative = "editor",
+        row = 0.15,
+        col = 0.10,
+        width = 0.8,
+        height = 0.7,
+        border = "single",
+      },
+      horizontal = { location = "rightbelow", split_ratio = 0.3 },
+      vertical = { location = "rightbelow", split_ratio = 0.5 },
+    },
   },
 }
 

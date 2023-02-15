@@ -10,6 +10,12 @@ vim.wo.wrap = false
 -- neovide config
 if vim.fn.exists "g:neovide" then
   vim.o.guifont = "SauceCodePro Nerd Font:h12"
+
+  vim.g.neovide_input_use_logo = 1
+  vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("!", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("t", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
 end
 
 -- highlight yanked text for 200ms using the "Visual" highlight group
@@ -21,6 +27,7 @@ augroup END
 ]]
 
 vim.diagnostic.config {
+  virtual_text = true,
   signs = {
     active = true,
     values = {
