@@ -8,9 +8,13 @@ local b = null_ls.builtins
 
 local sources = {
   -- Python
+  b.formatting.ruff.with {
+    args = { "--select", "I001", "--fix", "-e", "-n", "--stdin-filename", "$FILENAME", "-" }
+  },
   b.formatting.blue,
 
   b.diagnostics.mypy,
+  b.diagnostics.ruff,
 
   -- Lua
   b.formatting.stylua,
@@ -34,7 +38,9 @@ null_ls.setup {
         group = augroup,
         buffer = bufnr,
         callback = function()
-          vim.lsp.buf.format { bufnr = bufnr }
+          vim.lsp.buf.format { 
+            bufnr = bufnr 
+          }
         end,
       })
     end

@@ -1,11 +1,11 @@
 local capabilities = require("plugins.configs.lspconfig").capabilities
+local on_attach = require("plugins.configs.lspconfig").on_attach
 
-local lspconfig = require "lspconfig"
+local lspconfig = require("lspconfig")
 local servers = {
   "eslint",
   "vuels",
   "pyright",
-  "ruff_lsp",
   "rust_analyzer",
   "bashls",
   "dockerls",
@@ -14,25 +14,24 @@ local servers = {
   "clangd",
 }
 
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local on_attach = function(client, bufnr)
-  require("plugins.configs.lspconfig").on_attach(client, bufnr)
+-- local on_attach = function(client, bufnr)
+--   require("plugins.configs.lspconfig").on_attach(client, bufnr)
 
-  client.server_capabilities.documentFormattingProvider = true
-  client.server_capabilities.documentRangeFormattingProvider = true
+--   client.server_capabilities.documentFormattingProvider = true
+--   client.server_capabilities.documentRangeFormattingProvider = true
 
-  if client.supports_method "textDocument/formatting" then
-    vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = augroup,
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.buf.format { bufnr = bufnr }
-      end,
-    })
-  end
-end
+--   if client.supports_method "textDocument/formatting" then
+--     vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+--     vim.api.nvim_create_autocmd("BufWritePre", {
+--       group = augroup,
+--       buffer = bufnr,
+--       callback = function()
+--         vim.lsp.buf.format { bufnr = bufnr }
+--       end,
+--     })
+--   end
+-- end
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -75,21 +74,6 @@ lspconfig.pyright.setup {
         useLibraryCodeForTypes = true,
         diagnosticMode = "openFilesOnly",
       },
-    },
-  },
-}
-
-lspconfig.ruff_lsp.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 150,
-  },
-  init_options = {
-    settings = {
-      args = {},
-      organizeImports = true,
-      fixAll = false,
     },
   },
 }
