@@ -12,8 +12,8 @@ local servers = {
   "gopls",
   "lua_ls",
   "clangd",
+  "ols",
 }
-
 
 -- local on_attach = function(client, bufnr)
 --   require("plugins.configs.lspconfig").on_attach(client, bufnr)
@@ -34,16 +34,16 @@ local servers = {
 -- end
 
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+  lspconfig[lsp].setup({
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
       debounce_text_changes = 150,
     },
-  }
+  })
 end
 
-lspconfig.lua_ls.setup {
+lspconfig.lua_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   flags = {
@@ -56,9 +56,9 @@ lspconfig.lua_ls.setup {
       },
     },
   },
-}
+})
 
-lspconfig.pyright.setup {
+lspconfig.pyright.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   flags = {
@@ -76,4 +76,4 @@ lspconfig.pyright.setup {
       },
     },
   },
-}
+})

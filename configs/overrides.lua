@@ -18,7 +18,13 @@ M.treesitter = {
     "vim",
     "vue",
     "yaml",
+    "odin",
   },
+  highlight = {
+    enable = true,
+    use_languagetree = true,
+  },
+  indent = { enable = true },
 }
 
 M.mason = {
@@ -32,6 +38,9 @@ M.mason = {
 
     -- python
     "pyright",
+
+    -- odin
+    "ols",
 
     -- rust
     "rust-analyzer",
@@ -50,6 +59,10 @@ M.mason = {
 
 -- git support in nvimtree
 M.nvimtree = {
+  -- Enable Netrw to make the 'gx' shortcut work
+  disable_netrw = false,
+  hijack_netrw = false,
+
   git = {
     enable = true,
   },
@@ -70,18 +83,18 @@ M.nvimtree = {
 M.nvterm = {
   terminals = {
     shell = "/opt/homebrew/bin/fish",
-    -- type_opts = {
-    --   float = {
-    --     relative = "editor",
-    --     row = 0.15,
-    --     col = 0.10,
-    --     width = 0.8,
-    --     height = 0.7,
-    --     border = "single",
-    --   },
-    --   horizontal = { location = "rightbelow", split_ratio = 0.3 },
-    --   vertical = { location = "rightbelow", split_ratio = 0.5 },
-    -- },
+    type_opts = {
+      float = {
+        relative = "editor",
+        row = 0.15,
+        col = 0.10,
+        width = 0.8,
+        height = 0.7,
+        border = "single",
+      },
+      horizontal = { location = "rightbelow", split_ratio = 0.3 },
+      vertical = { location = "rightbelow", split_ratio = 0.5 },
+    },
   },
 }
 

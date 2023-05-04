@@ -1,5 +1,11 @@
 local M = {}
 
+M.custom1 = {
+  n = {
+    ["<leader>ft"] = { "<cmd> TodoTelescope <CR>", "toggle telescope todo list" },
+  },
+}
+
 -- M.disabled = {
 --   n = {
 --     ["<C-n>"] = "",

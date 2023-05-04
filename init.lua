@@ -3,12 +3,14 @@ vim.opt.shell = "/bin/bash"
 
 vim.opt.colorcolumn = "80"
 vim.o.colorcolumn = "80"
-vim.cmd [[ set colorcolumn=80 ]]
+vim.cmd([[ set colorcolumn=80 ]])
 
 vim.wo.wrap = false
 
+-- vim.opt.autochdir = true
+
 -- neovide config
-if vim.fn.exists "g:neovide" then
+if vim.fn.exists("g:neovide") then
   vim.o.guifont = "SauceCodePro Nerd Font:h12"
 
   vim.g.neovide_input_use_logo = 1
@@ -19,22 +21,23 @@ if vim.fn.exists "g:neovide" then
 end
 
 -- highlight yanked text for 200ms using the "Visual" highlight group
-vim.cmd [[
+vim.cmd([[
 augroup highlight_yank
 autocmd!
 au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
 augroup END
-]]
+]])
 
-vim.diagnostic.config {
+-- diagnostic
+vim.diagnostic.config({
   virtual_text = true,
   signs = {
     active = true,
     values = {
       { name = "DiagnosticSignError", text = "" },
-      { name = "DiagnosticSignWarn", text = "" },
-      { name = "DiagnosticSignHint", text = "" },
-      { name = "DiagnosticSignInfo", text = "" },
+      { name = "DiagnosticSignWarn",  text = "" },
+      { name = "DiagnosticSignHint",  text = "" },
+      { name = "DiagnosticSignInfo",  text = "" },
     },
   },
   update_in_insert = false,
@@ -55,4 +58,4 @@ vim.diagnostic.config {
       return d.message
     end,
   },
-}
+})
